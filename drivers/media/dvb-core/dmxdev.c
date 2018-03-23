@@ -474,6 +474,7 @@ static int dvb_dmxdev_update_events(struct dmxdev_events_queue *events,
 
 	return 0;
 }
+}
 
 static inline int dvb_dmxdev_check_data(struct dmxdev_filter *filter,
 			struct dvb_ringbuffer *src)
