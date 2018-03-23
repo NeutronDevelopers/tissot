@@ -27,7 +27,7 @@ export CPUS=`nproc`
 echo "Setting Version Number"
 export VER=v$1
 echo "Setting Defconfig"
-export DEFCONFIG=tissot-perf_defconfig
+export DEFCONFIG=nethunter_defconfig
 echo "Setting bzImage Location For FlareN kernel"
 export BZIMAGE=gen/arch/arm64/boot/Image.gz-dtb
 echo "Enabling Graphite Optimizations"
@@ -68,7 +68,6 @@ else
    exit
    echo "------------------COMPILING----------------------"
 fi
-
 #Build
 sleep $SLEEP
 #make O=gen clean && make O=gen mrproper
@@ -78,13 +77,21 @@ sleep $SLEEP
 if [ -f .config ];
 then
    echo ".config exists"
+if test -d gen
+then
+echo "Moving forward"
+else
+echo "Creating directory for compiling"
+mkdir -p gen out
+fi
 else
    echo ".config Does Not Exists"
    echo "Compiling From $DEFCONFIG"
+   mkdir -p gen out
    make O=gen $DEFCONFIG
    sleep $SLEEP
 fi
-mkdir -p gen
+echo "compiling..."
 make O=gen $EV -j$CPUS 2>&1 | tee build.log
 
 if [ -f $BZIMAGE ];
