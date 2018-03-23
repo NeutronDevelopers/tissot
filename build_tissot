@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ARCH=arm64
+export ARCH=arm64 SUBARCH=arm64
 export CROSS_COMPILE=aarch64-linux-gnu-
 export CCOMPILE=$CROSS_COMPILE
 
@@ -32,7 +32,7 @@ echo "Setting bzImage Location For FlareN kernel"
 export BZIMAGE=gen/arch/arm64/boot/Image.gz-dtb
 echo "Enabling Graphite Optimizations"
 export ENABLE_GRAPHITE=true
-export EV=EXTRAVERSION=_Flare-O_v$1
+export EV=EXTRAVERSION=_Fire-O_v$1
 echo "Environment Setup Complete Now Moving To Compiling"
 echo ""
 echo ""
